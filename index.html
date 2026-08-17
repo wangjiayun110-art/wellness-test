@@ -18,11 +18,18 @@
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:url" content="https://tz.790221.xyz/" />
   <meta property="og:site_name" content="中医体质自评" />
+  <meta property="og:image" content="https://tz.790221.xyz/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="中医九大体质自评量表 OG 封面" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="中医九大体质自评量表" />
   <meta name="twitter:description" content="依据《中医体质分类与判定》标准的 27 项自评量表，获得体质倾向评估与调养参考。" />
+  <meta name="twitter:image" content="https://tz.790221.xyz/assets/og-cover.png" />
+  <meta name="twitter:image:alt" content="中医九大体质自评量表 OG 封面" />
 
   <!-- 结构化数据：WebApplication + MedicalWebPage -->
   <script type="application/ld+json">
@@ -46,6 +53,96 @@
       }
     },
     "disclaimer": "本量表结果仅供健康自评参考，不作为医疗诊断依据。如有健康问题请咨询专业中医师。"
+  }
+  </script>
+
+  <!-- 结构化数据：WebSite + SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "中医体质自评",
+    "url": "https://tz.790221.xyz/",
+    "inLanguage": "zh-CN",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tz.790221.xyz/guide.html#{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- 结构化数据：FAQPage（富结果） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "什么是中医体质？为什么要测体质？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "中医体质是指人体在先天禀赋和后天调养基础上形成的相对稳定的身心特质。《中医体质分类与判定》将国人体质分为平和质、气虚质、阳虚质、阴虚质、痰湿质、湿热质、血瘀质、气郁质、特禀质九种。了解自己的体质倾向，有助于更有针对性地进行日常饮食、起居、运动和情志调养。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "中医九大体质是哪九种？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "九大体质包括平和质、气虚质、阳虚质、阴虚质、痰湿质、湿热质、血瘀质、气郁质、特禀质。其中平和质为阴阳气血协调的理想状态，其余八种为偏颇体质，各有典型表现与调养方向。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "如何判断自己属于哪种体质？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可通过《中医体质分类与判定》(ZYYXH/T 157-2009) 标准量表进行自评。本量表共 27 题，按近一年的身体感受作答，每题分「是 / 有时 / 不是」三档，系统会根据各体质转化分数判定主导体质倾向。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "气虚质怎么调理？吃什么好？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "气虚质宜补气健脾，避免生冷寒凉、油腻厚味与过度劳累。食疗推荐黄芪山药粥、党参红枣鸡汤、山药莲子小米粥；运动以太极拳、八段锦、散步等柔缓项目为宜。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "阳虚质怕冷怎么改善？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "阳虚质宜温阳散寒，注意腰腹、背部与下肢保暖，忌食生冷。食疗推荐当归生姜羊肉汤、桂圆红枣姜茶；多晒太阳，做舒缓运动，避免在阴冷潮湿环境中久留。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "阴虚质口干、手脚心热怎么调养？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "阴虚质宜滋阴润燥，避免熬夜、辛辣温燥与烈日高温。食疗推荐银耳百合莲子羹、沙参玉竹老鸭汤、麦冬石斛茶；运动以中小强度为主，避免大汗淋漓。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "痰湿质容易胖、痰多，饮食要注意什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "痰湿质宜健脾祛湿、化痰利水，少食肥甘厚味、甜食糕点与酒类。食疗推荐薏米赤小豆粥、冬瓜荷叶汤、陈皮茯苓粥；配合慢跑、游泳、骑车等有氧运动。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "体质测试结果能作为诊断或治疗依据吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。本自评结果仅供健康参考，帮助了解自身体质倾向，不能代替专业中医师的诊断、辨证与治疗。如有健康问题或需要调理方案，请及时咨询正规医疗机构的专业中医师。"
+        }
+      }
+    ]
   }
   </script>
 
@@ -202,6 +299,50 @@
             <div style="font-size:2.5rem;margin-bottom:1rem;">🌱</div>
             <h3 style="justify-content:center;">第 3 步 · 调养参考</h3>
             <p style="color:var(--color-text-soft);">获得对应体质的日常调养建议、饮食方向与生活起居参考，可按需进一步咨询专业中医师</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 常见问题 ========== -->
+    <section class="section section-alt" id="faq">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">常见问题</span>
+          <h2>关于中医体质自评的常见疑问</h2>
+        </header>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>什么是中医体质？为什么要测体质？</h3>
+            <p>中医体质是指人体在先天禀赋和后天调养基础上形成的相对稳定的身心特质。《中医体质分类与判定》将国人体质分为平和质、气虚质、阳虚质、阴虚质、痰湿质、湿热质、血瘀质、气郁质、特禀质九种。了解自己的体质倾向，有助于更有针对性地进行日常饮食、起居、运动和情志调养。</p>
+          </div>
+          <div class="faq-item">
+            <h3>中医九大体质是哪九种？</h3>
+            <p>九大体质包括平和质、气虚质、阳虚质、阴虚质、痰湿质、湿热质、血瘀质、气郁质、特禀质。其中平和质为阴阳气血协调的理想状态，其余八种为偏颇体质，各有典型表现与调养方向。</p>
+          </div>
+          <div class="faq-item">
+            <h3>如何判断自己属于哪种体质？</h3>
+            <p>可通过《中医体质分类与判定》(ZYYXH/T 157-2009) 标准量表进行自评。本量表共 27 题，按近一年的身体感受作答，每题分「是 / 有时 / 不是」三档，系统会根据各体质转化分数判定主导体质倾向。</p>
+          </div>
+          <div class="faq-item">
+            <h3>气虚质怎么调理？吃什么好？</h3>
+            <p>气虚质宜补气健脾，避免生冷寒凉、油腻厚味与过度劳累。食疗推荐黄芪山药粥、党参红枣鸡汤、山药莲子小米粥；运动以太极拳、八段锦、散步等柔缓项目为宜。</p>
+          </div>
+          <div class="faq-item">
+            <h3>阳虚质怕冷怎么改善？</h3>
+            <p>阳虚质宜温阳散寒，注意腰腹、背部与下肢保暖，忌食生冷。食疗推荐当归生姜羊肉汤、桂圆红枣姜茶；多晒太阳，做舒缓运动，避免在阴冷潮湿环境中久留。</p>
+          </div>
+          <div class="faq-item">
+            <h3>阴虚质口干、手脚心热怎么调养？</h3>
+            <p>阴虚质宜滋阴润燥，避免熬夜、辛辣温燥与烈日高温。食疗推荐银耳百合莲子羹、沙参玉竹老鸭汤、麦冬石斛茶；运动以中小强度为主，避免大汗淋漓。</p>
+          </div>
+          <div class="faq-item">
+            <h3>痰湿质容易胖、痰多，饮食要注意什么？</h3>
+            <p>痰湿质宜健脾祛湿、化痰利水，少食肥甘厚味、甜食糕点与酒类。食疗推荐薏米赤小豆粥、冬瓜荷叶汤、陈皮茯苓粥；配合慢跑、游泳、骑车等有氧运动。</p>
+          </div>
+          <div class="faq-item">
+            <h3>体质测试结果能作为诊断或治疗依据吗？</h3>
+            <p>不能。本自评结果仅供健康参考，帮助了解自身体质倾向，不能代替专业中医师的诊断、辨证与治疗。如有健康问题或需要调理方案，请及时咨询正规医疗机构的专业中医师。</p>
           </div>
         </div>
       </div>

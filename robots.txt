@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /quiz.html
+Disallow: /result.html
+
+Sitemap: https://tz.790221.xyz/sitemap.xml

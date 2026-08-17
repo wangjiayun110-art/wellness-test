@@ -40,14 +40,22 @@
       <div class="quiz-page">
         <div class="quiz-intro">
           <div style="font-size:3.5rem;margin-bottom:1rem;">🌿</div>
-          <h2>中医体质自测</h2>
-          <p>参考《中医体质分类与判定》标准，31 道自评题目，约 3 分钟。</p>
-          <p>了解自己的体质类型，得到一份专属的调养建议与养生方向。</p>
-          <button class="btn btn-primary btn-lg" id="startBtn" style="margin-top:2rem;">
-            开始测试 →
+          <h2>中医九大体质自评量表</h2>
+          <p>依据中华中医药学会《中医体质分类与判定》(ZYYXH/T 157-2009) 标准，共 31 项自评问题，约 3 分钟完成。</p>
+          <p>本量表通过自评方式评估你的中医体质倾向（包括平和质与 8 种偏颇体质），并提供特征解读与日常调养参考。</p>
+          <div style="background:var(--color-bg-alt);border-radius:12px;padding:1rem 1.25rem;margin:1.5rem 0;text-align:left;font-size:.875rem;color:var(--color-text-soft);">
+            <strong style="color:var(--color-text);">填写说明</strong>
+            <ul style="margin-top:.5rem;padding-left:1.25rem;">
+              <li>请根据<strong>近 1 年</strong>的身体感受作答</li>
+              <li>每题选「是 / 有时 / 不是」三档之一</li>
+              <li>无对错之分，请按真实感受填写</li>
+            </ul>
+          </div>
+          <button class="btn btn-primary btn-lg" id="startBtn" style="margin-top:1rem;">
+            开始体质评估 →
           </button>
           <p style="margin-top:2rem;font-size:.8125rem;color:var(--color-text-mute);">
-            ⚠️ 本测试结果仅作健康参考，不作为医疗诊断依据。
+            ⚠️ 本量表结果仅供健康自评参考，不作为医疗诊断依据。如有健康问题请咨询专业中医师。
           </p>
         </div>
       </div>

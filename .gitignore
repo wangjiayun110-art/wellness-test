@@ -1,0 +1,19 @@
+# 编辑器/系统
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+*.tmp
+
+# 日志与缓存
+*.log
+.cache/
+
+# 环境配置
+.env
+.env.local
+
+# Python（之前的官网用）
+__pycache__/
+*.pyc

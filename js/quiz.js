@@ -78,7 +78,7 @@
           <h2>上次测试结果</h2>
           <p>${date} 测试：你属于 <strong style="color:${type.color}">${type.name}</strong></p>
           <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2rem;">
-            <a href="result.html" class="btn btn-primary">查看完整结果</a>
+            <a href="/result" class="btn btn-primary">查看完整结果</a>
             <button class="btn btn-ghost" id="restartBtn">重新测试</button>
           </div>
         </div>
@@ -195,7 +195,7 @@
     };
     Storage.set(KEY_RESULT, result);
     Storage.remove(KEY_PROGRESS);
-    window.location.href = 'result.html';
+    window.location.href = '/result';
   }
 
   /* ---------- 工具：体质名 ---------- */

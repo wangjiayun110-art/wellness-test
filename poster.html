@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>中医九大体质自评量表 · 分享海报</title>
+<style>
+  :root{
+    --bg:#fdfaf6; --bg-alt:#f5ede0; --card:#ffffff;
+    --text:#2d2419; --text-soft:#6b5d4f; --text-mute:#a39888;
+    --primary:#e76f51; --primary-d:#d65a3a; --accent:#2a9d8f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#e9e2d6;}
+  body{
+    font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased; color:var(--text);
+    display:flex; flex-direction:column; align-items:center; padding:24px 12px 40px; gap:18px;
+  }
+
+  /* 工具栏 */
+  .toolbar{
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+  }
+  .toolbar button{
+    font:inherit; font-weight:600; font-size:15px; padding:11px 20px; border-radius:999px;
+    border:1px solid var(--primary); cursor:pointer; transition:.15s;
+  }
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-primary:hover{background:var(--primary-d);}
+  .btn-ghost{background:transparent; color:var(--primary);}
+  .btn-ghost:hover{background:rgba(231,111,81,.10);}
+  .hint{font-size:13px; color:#7a6f60; text-align:center; max-width:460px; line-height:1.6;}
+
+  /* 海报舞台：自适应缩放预览，导出时按原始 750x1334 */
+  .stage{width:100%; display:flex; justify-content:center; overflow:hidden;}
+  .poster{
+    width:750px; height:1334px; flex:0 0 auto;
+    background:
+      radial-gradient(120% 60% at 50% -8%, rgba(231,111,81,.16), rgba(231,111,81,0) 60%),
+      radial-gradient(90% 50% at 100% 100%, rgba(42,157,143,.12), rgba(42,157,143,0) 55%),
+      linear-gradient(180deg,#fdfaf6 0%, #f7efe2 100%);
+    border-radius:36px; position:relative; overflow:hidden;
+    box-shadow:0 30px 70px rgba(45,36,25,.22);
+    padding:60px 56px 48px;
+    display:flex; flex-direction:column;
+  }
+  /* 顶部装饰弧线 */
+  .poster::before{
+    content:""; position:absolute; top:-160px; left:-120px; width:420px; height:420px;
+    border:2px solid rgba(231,111,81,.18); border-radius:50%;
+  }
+  .poster::after{
+    content:""; position:absolute; bottom:-140px; right:-110px; width:360px; height:360px;
+    border:2px solid rgba(42,157,143,.16); border-radius:50%;
+  }
+
+  /* 品牌行 */
+  .brand{display:flex; align-items:center; gap:14px; position:relative;}
+  .brand .mark{
+    width:52px; height:52px; border-radius:16px; background:var(--primary);
+    display:flex; align-items:center; justify-content:center; font-size:28px;
+    box-shadow:0 8px 18px rgba(231,111,81,.35);
+  }
+  .brand .name{font-size:24px; font-weight:800; letter-spacing:.5px;}
+  .brand .name small{display:block; font-size:13px; font-weight:500; color:var(--text-soft); letter-spacing:0;}
+
+  /* 标题区 */
+  .hero{margin-top:46px; position:relative;}
+  .eyebrow{
+    display:inline-block; font-size:15px; font-weight:600; color:var(--primary);
+    background:rgba(231,111,81,.10); padding:8px 16px; border-radius:999px; letter-spacing:.3px;
+  }
+  .title{
+    margin-top:22px; font-size:74px; line-height:1.12; font-weight:900; letter-spacing:1px;
+  }
+  .title .hl{color:var(--primary);}
+  .lead{
+    margin-top:24px; font-size:27px; color:var(--text-soft); line-height:1.6; font-weight:500;
+  }
+  .lead b{color:var(--text); font-weight:800;}
+
+  /* 九大体质九宫格 */
+  .grid{
+    margin-top:44px; background:rgba(255,255,255,.7); border:1px solid rgba(232,223,209,.9);
+    border-radius:28px; padding:30px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px 8px;
+    position:relative; backdrop-filter:blur(2px);
+  }
+  .cell{display:flex; flex-direction:column; align-items:center; gap:12px;}
+  .cell .dot{
+    width:96px; height:96px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:46px; box-shadow:0 10px 22px rgba(45,36,25,.14); position:relative;
+  }
+  .cell .dot::after{
+    content:""; position:absolute; inset:-6px; border-radius:50%; border:2px solid currentColor; opacity:.18;
+  }
+  .cell .tname{font-size:24px; font-weight:700;}
+  .cell .ttag{font-size:15px; color:var(--text-soft); margin-top:-6px;}
+
+  /* 数据条 */
+  .stats{
+    margin-top:34px; display:grid; grid-template-columns:repeat(4,1fr);
+    background:var(--text); color:#fff; border-radius:22px; padding:22px 10px;
+    position:relative;
+  }
+  .stat{text-align:center; position:relative;}
+  .stat + .stat::before{
+    content:""; position:absolute; left:0; top:18%; height:64%; width:1px; background:rgba(255,255,255,.18);
+  }
+  .stat .num{font-size:38px; font-weight:900; color:#ffd9c9; line-height:1;}
+  .stat .lab{font-size:15px; color:rgba(255,255,255,.78); margin-top:8px;}
+
+  /* 二维码卡 */
+  .qr{
+    margin-top:34px; background:#fff; border-radius:26px; padding:30px;
+    display:flex; align-items:center; gap:26px; box-shadow:0 16px 36px rgba(45,36,25,.14);
+    position:relative;
+  }
+  .qr img{width:188px; height:188px; border-radius:14px; display:block; background:#fff;}
+  .qr .ql{display:flex; flex-direction:column; gap:10px;}
+  .qr .ql .big{font-size:32px; font-weight:900; line-height:1.2;}
+  .qr .ql .big span{color:var(--primary);}
+  .qr .ql .url{
+    display:inline-block; font-size:24px; font-weight:700; color:#fff; background:var(--primary);
+    padding:8px 18px; border-radius:999px; width:fit-content; letter-spacing:.5px;
+  }
+  .qr .ql .tip{font-size:17px; color:var(--text-soft);}
+
+  /* 免责 */
+  .disclaimer{
+    margin-top:auto; padding-top:24px; font-size:15px; line-height:1.7; color:#9a8e7c; text-align:center;
+    position:relative;
+  }
+  .disclaimer b{color:var(--text-soft);}
+
+  @media (max-width:820px){
+    body{padding:14px 6px 28px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <button class="btn-primary" id="saveBtn" onclick="savePoster()">保存为图片</button>
+    <button class="btn-ghost" onclick="window.print()">打印 / 另存 PDF</button>
+  </div>
+  <p class="hint">在电脑浏览器打开本页 → 点击「保存为图片」下载 PNG，或直接截图即可分享到朋友圈 / 微信群。二维码指向官网，别人扫码即可开始测试。</p>
+
+  <div class="stage" id="stage">
+    <div class="poster" id="poster">
+      <!-- 品牌 -->
+      <div class="brand">
+        <div class="mark">🌿</div>
+        <div class="name">中医体质自评<small>基于《中医体质分类与判定》标准</small></div>
+      </div>
+
+      <!-- 标题 -->
+      <div class="hero">
+        <span class="eyebrow">ZYYXH/T 157-2009 · 国家标准</span>
+        <div class="title">中医<span class="hl">九大体质</span><br/>自评量表</div>
+        <p class="lead">27 项自评 · 约 3 分钟<br/><b>读懂你身体的偏颇与平衡</b></p>
+      </div>
+
+      <!-- 九大体质 -->
+      <div class="grid" id="grid"></div>
+
+      <!-- 数据条 -->
+      <div class="stats">
+        <div class="stat"><div class="num">9</div><div class="lab">种体质分类</div></div>
+        <div class="stat"><div class="num">27</div><div class="lab">项自评量表</div></div>
+        <div class="stat"><div class="num">≈4</div><div class="lab">分钟完成</div></div>
+        <div class="stat"><div class="num">免费</div><div class="lab">无需注册</div></div>
+      </div>
+
+      <!-- 二维码 -->
+      <div class="qr">
+        <img src="assets/qrcode.png" alt="扫码开始测试" />
+        <div class="ql">
+          <div class="big">扫码开始<br/><span>体质评估</span></div>
+          <span class="url">tz.790221.xyz</span>
+          <div class="tip">长按或扫描二维码，立即测一测</div>
+        </div>
+      </div>
+
+      <!-- 免责 -->
+      <div class="disclaimer">
+        ⚠️ <b>免责声明</b>：本量表结果仅供健康自评参考，<b>不作为医疗诊断依据</b>。如有健康问题，请到正规医疗机构就诊或咨询专业中医师。
+      </div>
+    </div>
+  </div>
+
+<script>
+  // 九大体质（顺序与官网一致，emoji + 名称 + 品牌色 + 标签）
+  var TYPES = [
+    {name:'平和质', tag:'理想体质', emoji:'🌿', color:'#10b981'},
+    {name:'气虚质', tag:'容易疲劳', emoji:'🍃', color:'#0891b2'},
+    {name:'阳虚质', tag:'畏寒怕冷', emoji:'❄️', color:'#3b82f6'},
+    {name:'阴虚质', tag:'手足心热', emoji:'☀️', color:'#f59e0b'},
+    {name:'痰湿质', tag:'体型偏胖', emoji:'🌾', color:'#a16207'},
+    {name:'湿热质', tag:'面油口苦', emoji:'🔥', color:'#dc2626'},
+    {name:'血瘀质', tag:'肤色晦暗', emoji:'🍷', color:'#9333ea'},
+    {name:'气郁质', tag:'情绪低落', emoji:'🌸', color:'#ec4899'},
+    {name:'特禀质', tag:'容易过敏', emoji:'🌼', color:'#65a30d'}
+  ];
+  var grid = document.getElementById('grid');
+  grid.innerHTML = TYPES.map(function(t){
+    return '<div class="cell">'
+      + '<div class="dot" style="background:'+t.color+'22;color:'+t.color+';">'+(t.emoji||'●')+'</div>'
+      + '<div class="tname">'+t.name+'</div>'
+      + '<div class="ttag">'+t.tag+'</div>'
+      + '</div>';
+  }).join('');
+
+  // 预览自适应缩放
+  function fit(){
+    var stage = document.getElementById('stage');
+    var w = stage.clientWidth;
+    var scale = Math.min(1, (w - 8) / 750);
+    var p = document.getElementById('poster');
+    p.style.transform = 'scale('+scale+')';
+    p.style.transformOrigin = 'top center';
+    stage.style.height = (1334 * scale) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // 导出 PNG（html2canvas）
+  function savePoster(){
+    var btn = document.getElementById('saveBtn');
+    btn.disabled = true; btn.textContent = '生成中…';
+    var oldScale = document.getElementById('poster').style.transform;
+    document.getElementById('poster').style.transform = 'scale(1)';
+    function done(){
+      document.getElementById('poster').style.transform = oldScale;
+      btn.disabled = false; btn.textContent = '保存为图片';
+    }
+    if (window.html2canvas){
+      window.html2canvas(document.getElementById('poster'), {scale:2, backgroundColor:null, useCORS:true})
+        .then(function(canvas){
+          var a = document.createElement('a');
+          a.download = '中医九大体质自评量表-分享海报.png';
+          a.href = canvas.toDataURL('image/png');
+          a.click(); done();
+        }).catch(function(){ alert('导出失败，请改用截图或打印功能。'); done(); });
+    } else {
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+      s.onload = function(){ savePoster(); };
+      s.onerror = function(){ alert('无法加载导出组件，请直接用浏览器截图或打印。'); done(); };
+      document.head.appendChild(s);
+    }
+  }
+</script>
+</body>
+</html>

@@ -41,7 +41,7 @@
         <div class="quiz-intro">
           <div style="font-size:3.5rem;margin-bottom:1rem;">🌿</div>
           <h2>中医九大体质自评量表</h2>
-          <p>依据中华中医药学会《中医体质分类与判定》(ZYYXH/T 157-2009) 标准，共 31 项自评问题，约 3 分钟完成。</p>
+          <p>依据中华中医药学会《中医体质分类与判定》(ZYYXH/T 157-2009) 标准，共 50 项自评问题，约 4 分钟完成。</p>
           <p>本量表通过自评方式评估你的中医体质倾向（包括平和质与 8 种偏颇体质），并提供特征解读与日常调养参考。</p>
           <div style="background:var(--color-bg-alt);border-radius:12px;padding:1rem 1.25rem;margin:1.5rem 0;text-align:left;font-size:.875rem;color:var(--color-text-soft);">
             <strong style="color:var(--color-text);">填写说明</strong>

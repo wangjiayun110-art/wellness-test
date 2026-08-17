@@ -44,13 +44,10 @@
     document.documentElement.style.setProperty('--hero-bg',
       `linear-gradient(135deg, ${hexToRgba(t.color, .15)}, ${hexToRgba(t.color, .05)})`);
 
-    // 主要产品关键词取前 3 个
-    const topProducts = t.products.slice(0, 3);
-
     stage.innerHTML = `
       <div class="result-wrap">
         <!-- 头部 -->
-        <section class="result-hero" role="region" aria-label="测试结果概览">
+        <section class="result-hero" role="region" aria-label="体质评估结果">
           <div class="result-emoji" aria-hidden="true">${t.emoji}</div>
           <div class="result-type" style="color:${t.color}">${t.name}</div>
           <div class="result-tagline">${t.tagline} · 转化分数 ${result.score.toFixed(2)}</div>
@@ -58,12 +55,17 @@
             ${t.summary}
           </p>
           <div class="result-score">
-            <span>判定来源</span>
-            <strong>${totalAnswered(result.scores)} 道相关题目</strong>
+            <span>评估依据</span>
+            <strong>《中医体质分类与判定》ZYYXH/T 157-2009</strong>
           </div>
         </section>
 
-        <!-- 特征 -->
+        <!-- 免责提示 -->
+        <div class="result-disclaimer">
+          ⚠️ 本结果仅供健康自评参考，不作为医疗诊断依据。如有健康问题请咨询专业中医师。
+        </div>
+
+        <!-- 1. 典型特征 -->
         <section class="section-card">
           <h3><span class="num">1</span>典型特征</h3>
           <ul class="feature-list">
@@ -71,50 +73,88 @@
           </ul>
         </section>
 
-        <!-- 调养建议 -->
+        <!-- 2. 形成原因 -->
+        ${t.causes && t.causes.length ? `
         <section class="section-card">
-          <h3><span class="num">2</span>日常调养建议</h3>
-          <ul class="advice-list">
-            ${t.advice.map((a, i) =>
-              `<li data-num="${i + 1}"><span>${a}</span></li>`
-            ).join('')}
+          <h3><span class="num">2</span>形成原因</h3>
+          <p class="section-intro">该体质的形成通常与下列因素有关：</p>
+          <ul class="feature-list">
+            ${t.causes.map((c) => `<li>${c}</li>`).join('')}
           </ul>
         </section>
+        ` : ''}
 
-        <!-- 得分分布 -->
+        <!-- 3. 发病倾向 -->
+        ${t.tendencies && t.tendencies.length ? `
         <section class="section-card">
-          <h3><span class="num">3</span>九大体质得分</h3>
-          <p style="color:var(--color-text-soft);font-size:.9375rem;margin-bottom:1rem;">
-            分数越高表示在该体质上的倾向越明显。
-          </p>
-          <div class="score-bars" id="scoreBars"></div>
+          <h3><span class="num">3</span>发病倾向</h3>
+          <p class="section-intro">该体质人群需注意以下健康倾向：</p>
+          <ul class="feature-list">
+            ${t.tendencies.map((d) => `<li>${d}</li>`).join('')}
+          </ul>
         </section>
+        ` : ''}
 
-        <!-- 带货模块 - 核心 -->
-        <section class="section-card" style="background:linear-gradient(135deg,rgba(231,111,81,.05),rgba(42,157,143,.05));border-color:${t.color}20;">
-          <h3><span class="num" style="background:${t.color}">4</span>匹配的养生品类</h3>
-          <p style="color:var(--color-text-soft);font-size:.9375rem;margin-bottom:1rem;">
-            ${t.name}人群常关注以下食材/品类，你可以按需选购。
-          </p>
-          <div class="products-grid" id="productsGrid"></div>
+        <!-- 4. 调养原则 -->
+        <section class="section-card">
+          <h3><span class="num">4</span>调养原则</h3>
 
-          <div style="margin-top:1.5rem;">
-            <div style="font-weight:600;margin-bottom:.75rem;color:var(--color-text-soft);font-size:.875rem;">
-              选购渠道（自动跳到对应平台搜索页）
-            </div>
-            <div class="platform-list" id="platformList"></div>
+          <div class="advice-block">
+            <div class="advice-title">🏠 生活起居</div>
+            <p class="advice-text">${t.lifestyle}</p>
           </div>
 
-          <p style="margin-top:1.5rem;font-size:.8125rem;color:var(--color-text-mute);">
-            ⚠️ 提示：保健食品不是药品，不能代替药物治疗。本页跳转仅为推荐渠道，请按需选购。
+          <div class="advice-block">
+            <div class="advice-title">🏃 运动锻炼</div>
+            <p class="advice-text">${t.exercise}</p>
+          </div>
+
+          <div class="advice-block">
+            <div class="advice-title">💭 情志调摄</div>
+            <p class="advice-text">${t.emotion}</p>
+          </div>
+        </section>
+
+        <!-- 5. 饮食方向 -->
+        <section class="section-card">
+          <h3><span class="num">5</span>饮食方向</h3>
+
+          <div class="advice-block">
+            <div class="advice-title">✅ 推荐食材</div>
+            <div class="food-tags">
+              ${(t.foodRecommend && t.foodRecommend.length
+                ? t.foodRecommend
+                : ['日常均衡饮食即可']
+              ).map((f) => `<span class="food-tag food-tag-good">${f}</span>`).join('')}
+            </div>
+          </div>
+
+          ${t.foodAvoid && t.foodAvoid.length ? `
+          <div class="advice-block">
+            <div class="advice-title">⚠️ 少食 / 忌食</div>
+            <div class="food-tags">
+              ${t.foodAvoid.map((f) => `<span class="food-tag food-tag-avoid">${f}</span>`).join('')}
+            </div>
+          </div>
+          ` : ''}
+
+          <p style="margin-top:1rem;font-size:.8125rem;color:var(--color-text-mute);">
+            以上为日常饮食方向参考，具体调理建议咨询专业中医师或营养师。
           </p>
+        </section>
+
+        <!-- 6. 九大体质得分 -->
+        <section class="section-card">
+          <h3><span class="num">6</span>九大体质得分分布</h3>
+          <p class="section-intro">分数越高表示在该体质上的倾向越明显。本表为各体质转化分数对比。</p>
+          <div class="score-bars" id="scoreBars"></div>
         </section>
 
         <!-- 操作 -->
         <div class="action-row">
-          <a href="guide.html#${t.id}" class="btn btn-ghost">查看百科解读</a>
-          <button class="btn btn-ghost" id="shareBtn">📋 复制结果链接</button>
-          <button class="btn btn-ghost" id="retestBtn">🔁 重新测试</button>
+          <a href="guide.html#${t.id}" class="btn btn-ghost">查看百科详解</a>
+          <button class="btn btn-ghost" id="shareBtn">📋 复制分享</button>
+          <button class="btn btn-ghost" id="retestBtn">🔁 重新评估</button>
           <a href="index.html" class="btn btn-primary">回到首页</a>
         </div>
       </div>
@@ -123,23 +163,17 @@
     // 得分柱状图
     renderScoreBars(result.scores, t.id);
 
-    // 带货卡片
-    renderProducts(topProducts);
-
-    // 多平台跳转（每个产品都生成跳转链接 + 总入口）
-    renderPlatforms(topProducts);
-
     // 事件
     document.getElementById('retestBtn').addEventListener('click', () => {
-      if (!confirm('确定要清空结果并重新测试吗？')) return;
+      if (!confirm('确定要清空结果并重新评估吗？')) return;
       Storage.remove(KEY_RESULT);
       window.location.href = 'quiz.html';
     });
     document.getElementById('shareBtn').addEventListener('click', () => {
-      const txt = `我在「体质自测」测出来是「${t.name}」(${t.tagline})，你也来测测？${location.origin}${location.pathname.replace('result.html','quiz.html')}`;
+      const txt = `我在「中医体质自评」测出来是「${t.name}」(${t.tagline})，依据《中医体质分类与判定》标准。你也来测测？${location.origin}${location.pathname.replace('result.html','quiz.html')}`;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(txt).then(
-          () => alert('结果链接已复制到剪贴板'),
+          () => alert('分享语已复制到剪贴板'),
           () => prompt('复制失败，请手动复制：', txt)
         );
       } else {

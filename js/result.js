@@ -30,7 +30,7 @@
           <p style="color:var(--color-text-soft);margin-bottom:2rem;">
             完成测试后会自动跳转到结果页。
           </p>
-          <a href="quiz.html" class="btn btn-primary">开始测试 →</a>
+          <a href="/quiz" class="btn btn-primary">开始测试 →</a>
         </div>
       </div>
     `;
@@ -167,10 +167,10 @@
 
         <!-- 操作 -->
         <div class="action-row">
-          <a href="guide.html#${t.id}" class="btn btn-ghost">查看百科详解</a>
+          <a href="/guide#${t.id}" class="btn btn-ghost">查看百科详解</a>
           <button class="btn btn-ghost" id="shareBtn">📋 复制分享</button>
           <button class="btn btn-ghost" id="retestBtn">🔁 重新评估</button>
-          <a href="index.html" class="btn btn-primary">回到首页</a>
+          <a href="/" class="btn btn-primary">回到首页</a>
         </div>
       </div>
     `;
@@ -182,10 +182,10 @@
     document.getElementById('retestBtn').addEventListener('click', () => {
       if (!confirm('确定要清空结果并重新评估吗？')) return;
       Storage.remove(KEY_RESULT);
-      window.location.href = 'quiz.html';
+      window.location.href = '/quiz';
     });
     document.getElementById('shareBtn').addEventListener('click', () => {
-      const txt = `我在「中医体质自评」测出来是「${t.name}」(${t.tagline})，依据《中医体质分类与判定》标准。你也来测测？${location.origin}${location.pathname.replace('result.html','quiz.html')}`;
+      const txt = `我在「中医体质自评」测出来是「${t.name}」(${t.tagline})，依据《中医体质分类与判定》标准。你也来测测？${location.origin}/quiz`;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(txt).then(
           () => alert('分享语已复制到剪贴板'),

@@ -2,7 +2,7 @@
  * =============================================================
  * 体质自测 · 数据层
  * - 中医九大体质（参考《中医体质分类与判定》标准）
- * - 50 道自评题（每题 0 / 0.5 / 1 分）
+ * - 27 道自评题（每题 0 / 0.5 / 1 分）
  * - 每个体质对应的养生品类（中性、不带具体品牌）
  *
  * 注意：本数据集仅供健康参考，不作为医疗诊断依据。
@@ -320,76 +320,53 @@
   };
 
   /* ---------- 题库 ---------- */
-  // 共 50 题，参考《中医体质分类与判定》(ZYYXH/T 157-2009) 标准量表
-  // 每个体质 5-6 题，平和质作为对照基线
+  // 共 27 题，参考《中医体质分类与判定》(ZYYXH/T 157-2009) 标准量表
+  // 每个体质 3 题，平和质作为对照基线（精简版，约 2-3 分钟完成）
   const QUESTIONS = [
-    // 平和质（5 道，对照基线）
+    // 平和质（3 道，对照基线）
     { id: 'q1', type: 'pinghe', text: '您精力充沛，不易感到疲劳吗？' },
     { id: 'q2', type: 'pinghe', text: '您睡眠质量好，能很快入睡吗？' },
-    { id: 'q3', type: 'pinghe', text: '您胃口正常，饮食规律吗？' },
-    { id: 'q4', type: 'pinghe', text: '您面色红润、肤色润泽吗？' },
-    { id: 'q5', type: 'pinghe', text: '您性格开朗、乐观，对外界环境适应能力强吗？' },
+    { id: 'q3', type: 'pinghe', text: '您面色红润、肤色润泽吗？' },
 
-    // 气虚质（6 道）
-    { id: 'q6', type: 'qixu', text: '您容易疲乏，活动稍大就累吗？' },
-    { id: 'q7', type: 'qixu', text: '您说话声音低弱无力吗？' },
-    { id: 'q8', type: 'qixu', text: '您容易感冒，抵抗力偏弱吗？' },
-    { id: 'q9', type: 'qixu', text: '您容易出虚汗（不活动也出汗）吗？' },
-    { id: 'q10', type: 'qixu', text: '您活动量大就容易气短、气喘吗？' },
-    { id: 'q11', type: 'qixu', text: '您容易忘事、注意力难以集中吗？' },
+    // 气虚质（3 道）
+    { id: 'q4', type: 'qixu', text: '您容易疲乏，活动稍大就累吗？' },
+    { id: 'q5', type: 'qixu', text: '您说话声音低弱无力吗？' },
+    { id: 'q6', type: 'qixu', text: '您容易出虚汗（不活动也出汗）吗？' },
 
-    // 阳虚质（6 道）
-    { id: 'q12', type: 'yangxu', text: '您手脚发凉，比别人更怕冷吗？' },
-    { id: 'q13', type: 'yangxu', text: '您吃凉东西会感到不舒服吗？' },
-    { id: 'q14', type: 'yangxu', text: '您小便清长、夜尿偏多吗？' },
-    { id: 'q15', type: 'yangxu', text: '您比别人穿得更多，仍感觉冷吗？' },
-    { id: 'q16', type: 'yangxu', text: '您大便偏稀、不成形吗？' },
-    { id: 'q17', type: 'yangxu', text: '您性格偏沉静、内向吗？' },
+    // 阳虚质（3 道）
+    { id: 'q7', type: 'yangxu', text: '您手脚发凉，比别人更怕冷吗？' },
+    { id: 'q8', type: 'yangxu', text: '您吃凉东西会感到不舒服吗？' },
+    { id: 'q9', type: 'yangxu', text: '您大便偏稀、不成形吗？' },
 
-    // 阴虚质（6 道）
-    { id: 'q18', type: 'yinxu', text: '您手脚心发热，午后明显吗？' },
-    { id: 'q19', type: 'yinxu', text: '您口干咽燥、总想喝水吗？' },
-    { id: 'q20', type: 'yinxu', text: '您睡眠浅、易盗汗吗？' },
-    { id: 'q21', type: 'yinxu', text: '您两颧潮红、偏红吗？' },
-    { id: 'q22', type: 'yinxu', text: '您大便干燥、容易便秘吗？' },
-    { id: 'q23', type: 'yinxu', text: '您体型偏瘦吗？' },
+    // 阴虚质（3 道）
+    { id: 'q10', type: 'yinxu', text: '您手脚心发热，午后明显吗？' },
+    { id: 'q11', type: 'yinxu', text: '您口干咽燥、总想喝水吗？' },
+    { id: 'q12', type: 'yinxu', text: '您睡眠浅、易盗汗吗？' },
 
-    // 痰湿质（6 道）
-    { id: 'q24', type: 'tanoshi', text: '您体形偏胖、腹部松软吗？' },
-    { id: 'q25', type: 'tanoshi', text: '您面部油脂较多、痰多吗？' },
-    { id: 'q26', type: 'tanoshi', text: '您嘴里发黏、舌苔厚腻吗？' },
-    { id: 'q27', type: 'tanoshi', text: '您容易困倦、饭后尤甚吗？' },
-    { id: 'q28', type: 'tanoshi', text: '您喜欢吃甜食、肥腻食物吗？' },
-    { id: 'q29', type: 'tanoshi', text: '您眼睑或有浮肿吗？' },
+    // 痰湿质（3 道）
+    { id: 'q13', type: 'tanoshi', text: '您体形偏胖、腹部松软吗？' },
+    { id: 'q14', type: 'tanoshi', text: '您面部油脂较多、痰多吗？' },
+    { id: 'q15', type: 'tanoshi', text: '您嘴里发黏、舌苔厚腻吗？' },
 
-    // 湿热质（5 道）
-    { id: 'q30', type: 'shire', text: '您面部油光发亮、易生痤疮吗？' },
-    { id: 'q31', type: 'shire', text: '您口苦或口中有异味吗？' },
-    { id: 'q32', type: 'shire', text: '您小便偏黄、容易烦躁吗？' },
-    { id: 'q33', type: 'shire', text: '您大便黏滞、有排不尽感吗？' },
-    { id: 'q34', type: 'shire', text: '您眼睛容易红赤、有分泌物吗？' },
+    // 湿热质（3 道）
+    { id: 'q16', type: 'shire', text: '您面部油光发亮、易生痤疮吗？' },
+    { id: 'q17', type: 'shire', text: '您口苦或口中有异味吗？' },
+    { id: 'q18', type: 'shire', text: '您小便偏黄、容易烦躁吗？' },
 
-    // 血瘀质（5 道）
-    { id: 'q35', type: 'xueyu', text: '您面色晦暗、容易出现色斑吗？' },
-    { id: 'q36', type: 'xueyu', text: '您嘴唇颜色偏暗或紫吗？' },
-    { id: 'q37', type: 'xueyu', text: '您皮肤容易出现瘀斑吗？' },
-    { id: 'q38', type: 'xueyu', text: '您身体某处有固定疼痛（刺痛）吗？' },
-    { id: 'q39', type: 'xueyu', text: '您牙龈容易出血吗？' },
+    // 血瘀质（3 道）
+    { id: 'q19', type: 'xueyu', text: '您面色晦暗、容易出现色斑吗？' },
+    { id: 'q20', type: 'xueyu', text: '您嘴唇颜色偏暗或紫吗？' },
+    { id: 'q21', type: 'xueyu', text: '您皮肤容易出现瘀斑吗？' },
 
-    // 气郁质（6 道）
-    { id: 'q40', type: 'qiyu', text: '您情绪低落、敏感多虑吗？' },
-    { id: 'q41', type: 'qiyu', text: '您胸闷叹气、咽部有异物感吗？' },
-    { id: 'q42', type: 'qiyu', text: '您容易失眠、多梦吗？' },
-    { id: 'q43', type: 'qiyu', text: '您容易紧张、焦虑不安吗？' },
-    { id: 'q44', type: 'qiyu', text: '您多愁善感、感情脆弱吗？' },
-    { id: 'q45', type: 'qiyu', text: '您咽喉部常有异物感（梅核气）吗？' },
+    // 气郁质（3 道）
+    { id: 'q22', type: 'qiyu', text: '您情绪低落、敏感多虑吗？' },
+    { id: 'q23', type: 'qiyu', text: '您胸闷叹气、咽部有异物感吗？' },
+    { id: 'q24', type: 'qiyu', text: '您容易失眠、多梦吗？' },
 
-    // 特禀质（5 道）
-    { id: 'q46', type: 'teying', text: '您容易过敏（药物/食物/气味）吗？' },
-    { id: 'q47', type: 'teying', text: '您容易起疹、荨麻疹吗？' },
-    { id: 'q48', type: 'teying', text: '您鼻塞、流涕、喷嚏频繁吗？' },
-    { id: 'q49', type: 'teying', text: '您皮肤容易起抓痕、划痕吗？' },
-    { id: 'q50', type: 'teying', text: '您一吹风就容易起疹或打喷嚏吗？' },
+    // 特禀质（3 道）
+    { id: 'q25', type: 'teying', text: '您容易过敏（药物/食物/气味）吗？' },
+    { id: 'q26', type: 'teying', text: '您容易起疹、荨麻疹吗？' },
+    { id: 'q27', type: 'teying', text: '您鼻塞、流涕、喷嚏频繁吗？' },
   ];
 
   /* ---------- 选项得分映射 ---------- */

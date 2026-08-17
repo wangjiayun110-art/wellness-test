@@ -138,6 +138,21 @@
           </div>
           ` : ''}
 
+          ${t.foodTherapy && t.foodTherapy.length ? `
+          <div class="advice-block">
+            <div class="advice-title">🍲 经典食疗方</div>
+            <div class="therapy-list">
+              ${t.foodTherapy.map((f) => `
+                <div class="therapy-card">
+                  <div class="therapy-name">${f.name}</div>
+                  <div class="therapy-recipe">${f.recipe}</div>
+                  <div class="therapy-effect">${f.effect}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
+
           <p style="margin-top:1rem;font-size:.8125rem;color:var(--color-text-mute);">
             以上为日常饮食方向参考，具体调理建议咨询专业中医师或营养师。
           </p>

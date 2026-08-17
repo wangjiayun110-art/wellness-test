@@ -66,7 +66,7 @@
     "inLanguage": "zh-CN",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://tz.790221.xyz/guide.html#{search_term_string}",
+      "target": "https://tz.790221.xyz/guide#{search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -166,25 +166,25 @@
   <header class="site-header" id="siteHeader">
     <div class="container">
       <div class="nav-row">
-        <a href="index.html" class="logo">
+        <a href="/" class="logo">
           <span class="logo-mark" aria-hidden="true">🌿</span>
           <span>体质自测</span>
         </a>
         <nav class="nav-links" aria-label="主导航">
-          <a href="index.html" class="active">首页</a>
-          <a href="quiz.html">开始测试</a>
-          <a href="guide.html">体质百科</a>
+          <a href="/" class="active">首页</a>
+          <a href="/quiz">开始测试</a>
+          <a href="/guide">体质百科</a>
         </nav>
-        <a href="quiz.html" class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.9375rem;">
+        <a href="/quiz" class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.9375rem;">
           立即测试
         </a>
         <button class="menu-toggle icon-btn" type="button" aria-label="菜单">☰</button>
       </div>
       <nav class="mobile-menu" aria-label="移动端导航">
         <div style="display:flex;flex-direction:column;padding:.5rem 0;">
-          <a href="index.html" style="padding:.75rem 0;">首页</a>
-          <a href="quiz.html" style="padding:.75rem 0;">开始测试</a>
-          <a href="guide.html" style="padding:.75rem 0;">体质百科</a>
+          <a href="/" style="padding:.75rem 0;">首页</a>
+          <a href="/quiz" style="padding:.75rem 0;">开始测试</a>
+          <a href="/guide" style="padding:.75rem 0;">体质百科</a>
         </div>
       </nav>
     </div>
@@ -204,8 +204,8 @@
             参照中华中医药学会公布的《中医体质分类与判定》标准，通过 27 项自评问题评估你的体质倾向，并获得特征解读、调养建议与饮食方向参考。
           </p>
           <div class="hero-actions">
-            <a href="quiz.html" class="btn btn-primary btn-lg">开始体质评估 →</a>
-            <a href="guide.html" class="btn btn-ghost btn-lg">查看九大体质详解</a>
+            <a href="/quiz" class="btn btn-primary btn-lg">开始体质评估 →</a>
+            <a href="/guide" class="btn btn-ghost btn-lg">查看九大体质详解</a>
           </div>
           <ul class="hero-trust">
             <li><strong>9</strong><span>种体质分类</span></li>
@@ -357,7 +357,7 @@
         <p style="color:var(--color-text-soft);font-size:1.125rem;margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto;">
           27 项自评量表，约 3 分钟完成。依据《中医体质分类与判定》标准获得你的体质倾向评估与调养参考。
         </p>
-        <a href="quiz.html" class="btn btn-primary btn-lg">开始体质评估 →</a>
+        <a href="/quiz" class="btn btn-primary btn-lg">开始体质评估 →</a>
       </div>
     </section>
   </main>
@@ -386,7 +386,7 @@
       grid.innerHTML = ids.map((id) => {
         const t = window.WellnessData.TYPES[id];
         return `
-          <a href="guide.html#${id}" class="type-card" style="--accent-color:${t.color};">
+          <a href="/guide#${id}" class="type-card" style="--accent-color:${t.color};">
             <span class="type-emoji" aria-hidden="true">${t.emoji}</span>
             <div class="type-name">${t.name}</div>
             <div class="type-tagline">${t.tagline}</div>

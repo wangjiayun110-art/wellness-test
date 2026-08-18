@@ -1182,3 +1182,20 @@ body { overflow-x: hidden; overflow-wrap: anywhere; }
   .result-score { padding-left: .75rem; padding-right: .75rem; }
   .result-score strong { font-size: 1.05rem; overflow-wrap: anywhere; }
 }
+
+
+/* 体质小课堂 */
+.knowledge-section { background: linear-gradient(180deg, rgba(42,157,143,.06), transparent); }
+.knowledge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.knowledge-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; }
+.knowledge-icon { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: rgba(42,157,143,.12); color: var(--color-accent); font-weight: 700; margin-bottom: .875rem; }
+.knowledge-card h3 { font-size: 1.05rem; margin-bottom: .625rem; }
+.knowledge-card p, .knowledge-note, .knowledge-step span { color: var(--color-text-soft); font-size: .9375rem; line-height: 1.7; }
+.knowledge-path { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.knowledge-step { position: relative; padding: 1rem 1.25rem; border-left: 3px solid var(--color-primary); background: var(--color-bg-alt); border-radius: 0 var(--radius-md) var(--radius-md) 0; display: flex; flex-direction: column; gap: .25rem; }
+.knowledge-note { margin-top: 1.25rem; padding: 1rem 1.25rem; background: rgba(245,158,11,.08); border-radius: var(--radius-md); border-left: 3px solid var(--color-warning); }
+@media (max-width: 767.98px) {
+  .knowledge-grid, .knowledge-path { grid-template-columns: 1fr; gap: .75rem; }
+  .knowledge-card { padding: 1.25rem; }
+  .knowledge-step { padding: .875rem 1rem; }
+}

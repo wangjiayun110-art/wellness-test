@@ -125,6 +125,56 @@
       </div>
     </section>
 
+    <!-- ========== 兼夹体质说明 ========== -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">体质辨识</span>
+          <h2>关于「兼夹体质」</h2>
+        </header>
+        <div class="section-card">
+          <p style="color:var(--color-text-soft);line-height:1.75;margin-bottom:.75rem;">
+            现实中，很多人的体质并非单一，而是<strong>两种或多种体质兼夹</strong>并存，例如「气虚兼痰湿」「阳虚兼血瘀」「气郁兼阴虚」等。这通常与先天禀赋、年龄增长、长期生活习惯及慢性疾病等多重因素有关。
+          </p>
+          <p style="color:var(--color-text-soft);line-height:1.75;">
+            调养兼夹体质时，应以<strong>得分最高（主导）的体质为主</strong>、兼顾次要体质，循序渐进，避免顾此失彼。本自评量表会给出九大体质的得分分布，帮助你判断主导与兼夹倾向；具体调理方案建议咨询专业中医师辨证论治。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 四季养生 ========== -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">顺应四时</span>
+          <h2>四季养生要点</h2>
+        </header>
+        <div class="season-grid">
+          <div class="season-card">
+            <div class="season-emoji">🌱</div>
+            <h3>春 · 养肝</h3>
+            <p>春属木，通于肝。宜疏肝理气、调畅情志，早睡早起、适度运动。饮食宜清淡，多吃绿色蔬菜、芽苗菜，可饮玫瑰花茶。</p>
+          </div>
+          <div class="season-card">
+            <div class="season-emoji">☀️</div>
+            <h3>夏 · 养心</h3>
+            <p>夏属火，通于心。宜清心除烦、避暑养阴，午后小憩。饮食宜清淡生津，可吃绿豆、苦瓜、冬瓜、西瓜等。</p>
+          </div>
+          <div class="season-card">
+            <div class="season-emoji">🍂</div>
+            <h3>秋 · 养肺</h3>
+            <p>秋属金，通于肺。宜滋阴润燥、收敛神气，早睡早起。饮食宜润肺，可吃梨、银耳、百合、蜂蜜、山药等。</p>
+          </div>
+          <div class="season-card">
+            <div class="season-emoji">❄️</div>
+            <h3>冬 · 养肾</h3>
+            <p>冬属水，通于肾。宜温补藏精、早睡晚起、注意保暖。饮食宜温补，可吃羊肉、核桃、桂圆、黑芝麻等。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== 详情内容 ========== -->
     <section class="section section-alt">
       <div class="container">
@@ -202,11 +252,59 @@
             </ul>
           </div>
 
+          ${t.symptoms && t.symptoms.length ? `
+          <div class="guide-block">
+            <h3>🔍 症状详述</h3>
+            <div class="symptom-list">
+              ${t.symptoms.map((s) => `
+                <div class="symptom-group">
+                  <div class="sg-title">${s.group}</div>
+                  <div class="sg-text">${s.text}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
+
           <div class="guide-block">
             <h3>🌱 日常调养</h3>
-            <ul class="advice-list">
-              ${t.advice.map((a, i) => `<li data-num="${i + 1}"><span>${a}</span></li>`).join('')}
-            </ul>
+            <div class="advice-block">
+              <div class="advice-title">🏠 生活起居</div>
+              <p class="advice-text">${t.lifestyle}</p>
+            </div>
+            <div class="advice-block">
+              <div class="advice-title">🏃 运动锻炼</div>
+              <p class="advice-text">${t.exercise}</p>
+            </div>
+            <div class="advice-block">
+              <div class="advice-title">💭 情志调摄</div>
+              <p class="advice-text">${t.emotion}</p>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>💆 穴位保健</h3>
+            <div class="acupoint-list">
+              ${t.acupoints.map((a) => `
+                <div class="acupoint-item">
+                  <div class="ap-name">${a.name}</div>
+                  <div class="ap-detail">${a.location} · ${a.effect}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h3>🍵 代茶饮</h3>
+            <div class="therapy-list">
+              ${t.teas.map((f) => `
+                <div class="therapy-card">
+                  <div class="therapy-name">${f.name}</div>
+                  <div class="therapy-recipe">${f.recipe}</div>
+                  <div class="therapy-effect">${f.effect}</div>
+                </div>
+              `).join('')}
+            </div>
           </div>
 
           <div class="guide-block">

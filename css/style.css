@@ -4,29 +4,30 @@
 
 /* ---------- 主题变量 ---------- */
 :root {
-  --color-bg: #fdfaf6;
-  --color-bg-alt: #f5ede0;
-  --color-bg-card: #ffffff;
-  --color-text: #2d2419;
-  --color-text-soft: #6b5d4f;
-  --color-text-mute: #a39888;
-  --color-border: #e8dfd1;
-  --color-primary: #e76f51;
-  --color-primary-hover: #d65a3a;
-  --color-accent: #2a9d8f;
-  --color-warning: #f59e0b;
-  --color-success: #10b981;
-  --color-danger: #ef4444;
-  --color-shadow: rgba(45, 36, 25, .08);
-  --color-shadow-lg: rgba(45, 36, 25, .12);
+  --color-bg: #f7f2e7;
+  --color-bg-alt: #efe6d4;
+  --color-bg-card: #fffdf8;
+  --color-text: #2f2518;
+  --color-text-soft: #6b5a3e;
+  --color-text-mute: #a08d6e;
+  --color-border: #e2d6bf;
+  --color-primary: #b03a2e;
+  --color-primary-hover: #8f2c22;
+  --color-accent: #b8912e;
+  --color-warning: #c9a227;
+  --color-success: #3e7a56;
+  --color-danger: #a02822;
+  --color-shadow: rgba(47, 37, 24, .08);
+  --color-shadow-lg: rgba(47, 37, 24, .12);
 
   --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', -apple-system,
                BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', 'Georgia', serif;
 
   --container: 1200px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --shadow-sm: 0 2px 6px var(--color-shadow);
   --shadow-md: 0 6px 16px var(--color-shadow);
   --shadow-lg: 0 16px 40px var(--color-shadow-lg);
@@ -57,6 +58,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 a { color: var(--color-primary); text-decoration: none; transition: color .15s var(--ease); }
 a:hover { color: var(--color-primary-hover); }
 ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
 
 /* ---------- 容器 ---------- */
 .container {
@@ -84,13 +86,13 @@ ul { list-style: none; }
 .btn-block { width: 100%; }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-primary), #f59482);
+  background: linear-gradient(135deg, var(--color-primary), #cc6b5a);
   color: white;
-  box-shadow: 0 8px 20px -6px rgba(231, 111, 81, .5);
+  box-shadow: 0 8px 20px -6px rgba(176, 58, 46, .5);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(231, 111, 81, .65);
+  box-shadow: 0 12px 28px -6px rgba(176, 58, 46, .65);
   color: white;
 }
 
@@ -102,9 +104,9 @@ ul { list-style: none; }
 .btn-ghost:hover { background: var(--color-bg-alt); color: var(--color-text); }
 
 .btn-accent {
-  background: linear-gradient(135deg, var(--color-accent), #4cb5a8);
+  background: linear-gradient(135deg, var(--color-accent), #c9a84a);
   color: white;
-  box-shadow: 0 8px 20px -6px rgba(42, 157, 143, .45);
+  box-shadow: 0 8px 20px -6px rgba(184, 145, 46, .45);
 }
 .btn-accent:hover { color: white; transform: translateY(-2px); }
 
@@ -113,7 +115,7 @@ ul { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(253, 250, 246, .85);
+  background: rgba(247, 242, 231, .85);
   backdrop-filter: saturate(140%) blur(14px);
   -webkit-backdrop-filter: saturate(140%) blur(14px);
   border-bottom: 1px solid transparent;
@@ -141,10 +143,13 @@ ul { list-style: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--color-primary), #f59482);
-  color: white;
-  font-size: 1.25rem;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: #fffdf8;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-family: var(--font-serif);
+  box-shadow: inset 0 0 0 2px rgba(184, 145, 46, .55);
 }
 
 .nav-links { display: flex; gap: 2rem; }
@@ -181,7 +186,7 @@ ul { list-style: none; }
   width: 600px;
   height: 600px;
   background: radial-gradient(circle,
-    rgba(231, 111, 81, .12),
+    rgba(176, 58, 46, .12),
     transparent 70%);
   filter: blur(40px);
   z-index: -1;
@@ -194,7 +199,7 @@ ul { list-style: none; }
   width: 500px;
   height: 500px;
   background: radial-gradient(circle,
-    rgba(42, 157, 143, .12),
+    rgba(184, 145, 46, .12),
     transparent 70%);
   filter: blur(40px);
   z-index: -1;
@@ -211,7 +216,7 @@ ul { list-style: none; }
   align-items: center;
   gap: .5rem;
   padding: .375rem .875rem;
-  background: rgba(231, 111, 81, .12);
+  background: rgba(176, 58, 46, .12);
   color: var(--color-primary);
   border-radius: 999px;
   font-size: .8125rem;
@@ -272,7 +277,7 @@ ul { list-style: none; }
   position: absolute;
   inset: 8%;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(231, 111, 81, .15), rgba(42, 157, 143, .15));
+  background: linear-gradient(135deg, rgba(176, 58, 46, .15), rgba(184, 145, 46, .15));
   filter: blur(20px);
 }
 
@@ -291,7 +296,20 @@ ul { list-style: none; }
   font-size: clamp(1.75rem, 4vw, 2.25rem);
   font-weight: 700;
   letter-spacing: -.02em;
-  margin-bottom: .75rem;
+  margin-bottom: .875rem;
+  position: relative;
+  padding-bottom: .875rem;
+}
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
 }
 .section-header p {
   color: var(--color-text-soft);
@@ -305,6 +323,32 @@ ul { list-style: none; }
   letter-spacing: .1em;
   text-transform: uppercase;
   margin-bottom: .75rem;
+}
+
+/* FAQ 常见问题 */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.faq-item h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  color: var(--color-text);
+}
+.faq-item p {
+  font-size: .9375rem;
+  color: var(--color-text-soft);
+  line-height: 1.7;
 }
 
 /* ---------- 九大体质卡片网格 ---------- */
@@ -378,13 +422,13 @@ ul { list-style: none; }
 }
 .plan-card.is-recommended {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(231, 111, 81, .15);
+  box-shadow: 0 0 0 3px rgba(176, 58, 46, .15);
 }
 .plan-badge {
   position: absolute;
   top: -10px;
   right: 1.5rem;
-  background: linear-gradient(135deg, var(--color-primary), #f59482);
+  background: linear-gradient(135deg, var(--color-primary), #cc6b5a);
   color: white;
   font-size: .6875rem;
   font-weight: 700;
@@ -533,11 +577,11 @@ ul { list-style: none; }
 }
 .option:hover {
   border-color: var(--color-primary);
-  background: rgba(231, 111, 81, .04);
+  background: rgba(176, 58, 46, .04);
 }
 .option.is-selected {
   border-color: var(--color-primary);
-  background: rgba(231, 111, 81, .08);
+  background: rgba(176, 58, 46, .08);
 }
 .option-radio {
   width: 22px;
@@ -592,7 +636,7 @@ ul { list-style: none; }
 .result-hero {
   text-align: center;
   padding: 2.5rem 2rem;
-  background: var(--hero-bg, linear-gradient(135deg, #fff, #f5ede0));
+  background: var(--hero-bg, linear-gradient(135deg, #fff, #efe6d4));
   border-radius: var(--radius-lg);
   margin-bottom: 2rem;
   position: relative;
@@ -616,7 +660,7 @@ ul { list-style: none; }
   display: inline-flex;
   flex-direction: column;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, .6);
+  background: rgba(255, 253, 248, .6);
   border-radius: var(--radius-md);
   font-size: .875rem;
   color: var(--color-text-soft);
@@ -644,7 +688,7 @@ ul { list-style: none; }
 .section-card h3 .num {
   display: inline-flex;
   width: 28px; height: 28px;
-  background: linear-gradient(135deg, var(--color-primary), #f59482);
+  background: linear-gradient(135deg, var(--color-primary), #cc6b5a);
   color: white;
   border-radius: 50%;
   font-size: .875rem;
@@ -701,7 +745,7 @@ ul { list-style: none; }
 }
 .product-chip {
   padding: 1rem;
-  background: linear-gradient(135deg, rgba(231, 111, 81, .06), rgba(42, 157, 143, .06));
+  background: linear-gradient(135deg, rgba(176, 58, 46, .06), rgba(184, 145, 46, .06));
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   text-align: center;
@@ -727,7 +771,7 @@ ul { list-style: none; }
   border-color: var(--color-primary);
   transform: translateX(4px);
   color: var(--color-text);
-  background: rgba(231, 111, 81, .04);
+  background: rgba(176, 58, 46, .04);
 }
 .platform-icon {
   width: 40px;
@@ -881,8 +925,8 @@ ul { list-style: none; }
    结果页扩展样式（专业版）
    ============================================================= */
 .result-disclaimer {
-  background: rgba(245, 158, 11, .08);
-  border: 1px solid rgba(245, 158, 11, .3);
+  background: rgba(201, 162, 39, .08);
+  border: 1px solid rgba(201, 162, 39, .3);
   border-left: 4px solid var(--color-warning);
   border-radius: var(--radius-md);
   padding: .875rem 1.25rem;
@@ -934,15 +978,15 @@ ul { list-style: none; }
 }
 
 .food-tag-good {
-  background: rgba(16, 185, 129, .12);
-  color: #047857;
-  border: 1px solid rgba(16, 185, 129, .3);
+  background: rgba(62, 122, 86, .12);
+  color: #2f5d43;
+  border: 1px solid rgba(62, 122, 86, .3);
 }
 
 .food-tag-avoid {
-  background: rgba(239, 68, 68, .08);
-  color: #b91c1c;
-  border: 1px solid rgba(239, 68, 68, .25);
+  background: rgba(176, 58, 46, .08);
+  color: #8f2c22;
+  border: 1px solid rgba(176, 58, 46, .25);
 }
 
 /* 经典食疗方 */
@@ -1027,6 +1071,7 @@ ul { list-style: none; }
 
   /* 卡片内边距收紧 */
   .section-card { padding: 1.25rem; }
+  .faq-item { padding: 1rem; }
 
   /* 测试问卷优化 */
   .quiz-page { padding: 1rem 1rem 2rem; }
@@ -1101,26 +1146,26 @@ ul { list-style: none; }
 /* ---------- 暗色模式（专业版） ---------- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #1a1614;
-    --color-bg-alt: #221c19;
-    --color-bg-card: #2a2320;
-    --color-text: #f5ede0;
-    --color-text-soft: #c4b8ac;
-    --color-text-mute: #8a7e72;
-    --color-border: #3a322d;
+    --color-bg: #1b1610;
+    --color-bg-alt: #251e15;
+    --color-bg-card: #2d251a;
+    --color-text: #efe6d4;
+    --color-text-soft: #cdbb9f;
+    --color-text-mute: #9a8968;
+    --color-border: #3d3428;
     --color-shadow: rgba(0, 0, 0, .3);
     --color-shadow-lg: rgba(0, 0, 0, .5);
   }
 
-  .result-hero { background: linear-gradient(135deg, rgba(231, 111, 81, .08), rgba(42, 157, 143, .08)); }
+  .result-hero { background: linear-gradient(135deg, rgba(176, 58, 46, .08), rgba(184, 145, 46, .08)); }
   .advice-block { background: var(--color-bg-alt); }
   .food-tag-good {
-    background: rgba(16, 185, 129, .15);
-    color: #34d399;
+    background: rgba(62, 122, 86, .15);
+    color: #82c69e;
   }
   .food-tag-avoid {
-    background: rgba(239, 68, 68, .12);
-    color: #f87171;
+    background: rgba(176, 58, 46, .12);
+    color: #e08a80;
   }
 }
 

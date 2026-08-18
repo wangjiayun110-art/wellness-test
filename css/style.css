@@ -716,6 +716,82 @@ h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
   font-size: 1.25rem;
 }
 
+/* 症状详述 */
+.symptom-list {
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+  margin-top: .875rem;
+}
+.symptom-group .sg-title {
+  font-weight: 700;
+  font-size: .9375rem;
+  color: var(--color-text);
+  margin-bottom: .25rem;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+.symptom-group .sg-title::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+.symptom-group .sg-text {
+  font-size: .9375rem;
+  color: var(--color-text-soft);
+  line-height: 1.7;
+}
+
+/* 穴位保健 */
+.acupoint-list {
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+.acupoint-item {
+  padding: .625rem .875rem;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+}
+.acupoint-item .ap-name {
+  font-weight: 700;
+  font-size: .9375rem;
+  color: var(--color-primary);
+  margin-bottom: .125rem;
+}
+.acupoint-item .ap-detail {
+  font-size: .875rem;
+  color: var(--color-text-soft);
+  line-height: 1.6;
+}
+
+/* 四季养生 */
+.season-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.season-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  transition: all .25s var(--ease);
+}
+.season-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.season-emoji { font-size: 2rem; margin-bottom: .5rem; }
+.season-card h3 { font-size: 1.125rem; margin-bottom: .5rem; }
+.season-card p { font-size: .9375rem; color: var(--color-text-soft); line-height: 1.7; }
+
 .advice-list li {
   display: flex;
   gap: .625rem;
@@ -891,12 +967,14 @@ h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
   .plans-grid { grid-template-columns: repeat(3, 1fr); }
   .products-grid { grid-template-columns: repeat(3, 1fr); }
   .feature-list { grid-template-columns: 1fr 1fr; }
+  .season-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 1024px) {
   .container { padding: 0 2rem; }
   .hero-grid { grid-template-columns: 1.2fr 1fr; gap: 4rem; }
   .types-grid { grid-template-columns: repeat(3, 1fr); }
+  .season-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ---------- 移动端 ---------- */

@@ -1209,3 +1209,21 @@ body { overflow-x: hidden; overflow-wrap: anywhere; }
 .knowledge-faq p { margin: .75rem 0 0; color: var(--color-text-soft); font-size: .9375rem; line-height: 1.7; }
 @media (max-width: 767.98px) { .season-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 374.98px) { .season-grid { grid-template-columns: 1fr; } }
+
+
+/* 食疗展示与颜色层次 */
+.therapy-showcase { background: linear-gradient(135deg, #fffaf2 0%, #f2faf5 100%); border-top: 1px solid rgba(42,157,143,.12); border-bottom: 1px solid rgba(231,111,81,.12); }
+.therapy-showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.therapy-showcase-card { min-height: 220px; padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(37,78,70,.12); box-shadow: 0 10px 26px rgba(38,70,83,.06); }
+.therapy-showcase-card > span { display: block; font-size: 2.1rem; margin-bottom: .75rem; }
+.therapy-showcase-card h3 { font-size: 1.125rem; margin-bottom: .5rem; }
+.therapy-showcase-card p { color: var(--color-text-soft); font-size: .9375rem; line-height: 1.7; }
+.therapy-showcase-card small { display: block; margin-top: 1rem; color: var(--color-text-mute); line-height: 1.5; }
+.therapy-warm { background: #fff4e6; }
+.therapy-fresh { background: #eaf7f1; }
+.therapy-moist { background: #f3efff; }
+.therapy-showcase-action { text-align: center; margin-top: 1.5rem; }
+@media (max-width: 767.98px) {
+  .therapy-showcase-grid { grid-template-columns: 1fr; }
+  .therapy-showcase-card { min-height: 0; padding: 1.25rem; }
+}

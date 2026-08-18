@@ -40,6 +40,7 @@
 
   function renderResult(result) {
     const t = TYPES[result.typeId];
+    const foodTherapy = (t && t.foodTherapy ? t.foodTherapy : []).concat((window.WellnessRecipes || {})[result.typeId] || []);
     if (!t) return renderNoResult();
 
     // 头部颜色根据体质调整
@@ -140,11 +141,11 @@
           </div>
           ` : ''}
 
-          ${t.foodTherapy && t.foodTherapy.length ? `
+          ${foodTherapy.length ? `
           <div class="advice-block">
             <div class="advice-title">🍲 经典食疗方</div>
             <div class="therapy-list">
-              ${t.foodTherapy.map((f) => `
+              ${foodTherapy.map((f) => `
                 <div class="therapy-card">
                   <div class="therapy-name">${f.name}</div>
                   <div class="therapy-recipe">${f.recipe}</div>

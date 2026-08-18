@@ -6,6 +6,7 @@
 
   const { QUESTIONS, OPTIONS, computeScores, findDominant } = window.WellnessData;
   const { Storage } = window.WellnessApp;
+  const wpUrl = (page) => window.TizhiShopIntegration ? window.TizhiShopIntegration.url(page) : `/${page}`;
 
   // 进度键名（关闭标签页会丢失 - 这是预期，避免隐私问题）
   const KEY_PROGRESS = 'wellness-progress-v1';
@@ -78,7 +79,7 @@
           <h2>上次测试结果</h2>
           <p>${date} 测试：你属于 <strong style="color:${type.color}">${type.name}</strong></p>
           <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2rem;">
-            <a href="/result" class="btn btn-primary">查看完整结果</a>
+            <a href="${wpUrl('result')}" class="btn btn-primary">查看完整结果</a>
             <button class="btn btn-ghost" id="restartBtn">重新测试</button>
           </div>
         </div>
@@ -195,7 +196,8 @@
     };
     Storage.set(KEY_RESULT, result);
     Storage.remove(KEY_PROGRESS);
-    window.location.href = '/result';
+    window.dispatchEvent(new CustomEvent('tizhi-shop:result', { detail: result }));
+    window.location.href = wpUrl('result');
   }
 
   /* ---------- 工具：体质名 ---------- */

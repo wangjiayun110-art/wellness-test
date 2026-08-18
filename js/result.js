@@ -71,6 +71,16 @@
           <ul class="feature-list">
             ${t.features.map((f) => `<li>${f}</li>`).join('')}
           </ul>
+          ${t.symptoms && t.symptoms.length ? `
+          <div class="symptom-list">
+            ${t.symptoms.map((s) => `
+              <div class="symptom-group">
+                <div class="sg-title">${s.group}</div>
+                <div class="sg-text">${s.text}</div>
+              </div>
+            `).join('')}
+          </div>
+          ` : ''}
         </section>
 
         <!-- 2. 形成原因 -->
@@ -113,6 +123,20 @@
             <div class="advice-title">💭 情志调摄</div>
             <p class="advice-text">${t.emotion}</p>
           </div>
+
+          ${t.acupoints && t.acupoints.length ? `
+          <div class="advice-block">
+            <div class="advice-title">💆 穴位保健</div>
+            <div class="acupoint-list">
+              ${t.acupoints.map((a) => `
+                <div class="acupoint-item">
+                  <div class="ap-name">${a.name}</div>
+                  <div class="ap-detail">${a.location} · ${a.effect}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
         </section>
 
         <!-- 5. 饮食方向 -->
@@ -153,6 +177,21 @@
           </div>
           ` : ''}
 
+          ${t.teas && t.teas.length ? `
+          <div class="advice-block">
+            <div class="advice-title">🍵 代茶饮</div>
+            <div class="therapy-list">
+              ${t.teas.map((f) => `
+                <div class="therapy-card">
+                  <div class="therapy-name">${f.name}</div>
+                  <div class="therapy-recipe">${f.recipe}</div>
+                  <div class="therapy-effect">${f.effect}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
+
           <p style="margin-top:1rem;font-size:.8125rem;color:var(--color-text-mute);">
             以上为日常饮食方向参考，具体调理建议咨询专业中医师或营养师。
           </p>
@@ -169,6 +208,7 @@
         <div class="action-row">
           <a href="/guide#${t.id}" class="btn btn-ghost">查看百科详解</a>
           <button class="btn btn-ghost" id="shareBtn">📋 复制分享</button>
+          <button class="btn btn-ghost" id="shareCardBtn">🖼️ 生成分享图</button>
           <button class="btn btn-ghost" id="retestBtn">🔁 重新评估</button>
           <a href="/" class="btn btn-primary">回到首页</a>
         </div>
@@ -195,6 +235,102 @@
         prompt('复制分享语：', txt);
       }
     });
+    document.getElementById('shareCardBtn').addEventListener('click', () => {
+      generateShareCard(t, result);
+    });
+  }
+
+  // 生成专属结果分享图（Canvas 绘制，下载 PNG）
+  function generateShareCard(t, result) {
+    const W = 750, H = 1000;
+    const canvas = document.createElement('canvas');
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    const bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, t.gradient[0]);
+    bg.addColorStop(1, t.gradient[1]);
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
+
+    ctx.font = '110px "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif';
+    ctx.fillText(t.emoji, W / 2, 185);
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 76px "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText(t.name, W / 2, 330);
+
+    ctx.font = '34px "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,.94)';
+    ctx.fillText(t.tagline, W / 2, 388);
+
+    ctx.font = 'bold 42px "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText('转化分数 ' + result.score.toFixed(2), W / 2, 452);
+
+    ctx.fillStyle = 'rgba(255,255,255,.97)';
+    roundRectPath(ctx, 50, 500, W - 100, 230, 24);
+    ctx.fill();
+
+    ctx.fillStyle = '#2f2518';
+    ctx.font = '30px "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif';
+    wrapTextLine(ctx, t.summary, W / 2, 548, W - 150, 46);
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '26px "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText('长按识别二维码 · 测测你的体质', W / 2, 980);
+
+    const qrSize = 168;
+    const img = new Image();
+    img.onload = function () {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(W / 2 - qrSize / 2 - 10, 770 - 10, qrSize + 20, qrSize + 20);
+      ctx.drawImage(img, W / 2 - qrSize / 2, 770, qrSize, qrSize);
+      downloadShareCard(canvas, t.name);
+    };
+    img.onerror = function () {
+      downloadShareCard(canvas, t.name);
+    };
+    img.src = location.origin + '/assets/qrcode.png';
+  }
+
+  function downloadShareCard(canvas, name) {
+    const a = document.createElement('a');
+    a.download = '体质自测结果-' + name + '.png';
+    a.href = canvas.toDataURL('image/png');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  function roundRectPath(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function wrapTextLine(ctx, text, x, y, maxWidth, lineHeight) {
+    const chars = text.split('');
+    let line = '';
+    let yy = y;
+    for (let i = 0; i < chars.length; i++) {
+      const test = line + chars[i];
+      if (ctx.measureText(test).width > maxWidth && line) {
+        ctx.fillText(line, x, yy);
+        line = chars[i];
+        yy += lineHeight;
+      } else {
+        line = test;
+      }
+    }
+    ctx.fillText(line, x, yy);
   }
 
   function renderScoreBars(scores, highlightId) {

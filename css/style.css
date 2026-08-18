@@ -4,21 +4,21 @@
 
 /* ---------- 主题变量 ---------- */
 :root {
-  --color-bg: #f7f2e7;
-  --color-bg-alt: #efe6d4;
-  --color-bg-card: #fffdf8;
-  --color-text: #2f2518;
-  --color-text-soft: #6b5a3e;
-  --color-text-mute: #a08d6e;
-  --color-border: #e2d6bf;
-  --color-primary: #b03a2e;
-  --color-primary-hover: #8f2c22;
-  --color-accent: #b8912e;
+  --color-bg: #15110c;
+  --color-bg-alt: #201a13;
+  --color-bg-card: #282118;
+  --color-text: #efe6d4;
+  --color-text-soft: #cdbb9f;
+  --color-text-mute: #9a8968;
+  --color-border: #3a3226;
+  --color-primary: #c4453c;
+  --color-primary-hover: #e05a4f;
+  --color-accent: #c9a13f;
   --color-warning: #c9a227;
-  --color-success: #3e7a56;
-  --color-danger: #a02822;
-  --color-shadow: rgba(47, 37, 24, .08);
-  --color-shadow-lg: rgba(47, 37, 24, .12);
+  --color-success: #5fae7e;
+  --color-danger: #e08a80;
+  --color-shadow: rgba(0, 0, 0, .4);
+  --color-shadow-lg: rgba(0, 0, 0, .6);
 
   --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', -apple-system,
                BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -41,6 +41,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -115,7 +116,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(247, 242, 231, .85);
+  background: rgba(21, 17, 12, .85);
   backdrop-filter: saturate(140%) blur(14px);
   -webkit-backdrop-filter: saturate(140%) blur(14px);
   border-bottom: 1px solid transparent;
@@ -636,7 +637,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
 .result-hero {
   text-align: center;
   padding: 2.5rem 2rem;
-  background: var(--hero-bg, linear-gradient(135deg, #fff, #efe6d4));
+  background: var(--hero-bg, linear-gradient(135deg, #282118, #15110c));
   border-radius: var(--radius-lg);
   margin-bottom: 2rem;
   position: relative;
@@ -660,7 +661,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
   display: inline-flex;
   flex-direction: column;
   padding: 1rem 2rem;
-  background: rgba(255, 253, 248, .6);
+  background: rgba(40, 33, 24, .6);
   border-radius: var(--radius-md);
   font-size: .875rem;
   color: var(--color-text-soft);
@@ -1056,15 +1057,15 @@ h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
 }
 
 .food-tag-good {
-  background: rgba(62, 122, 86, .12);
-  color: #2f5d43;
-  border: 1px solid rgba(62, 122, 86, .3);
+  background: rgba(95, 174, 126, .16);
+  color: #82c69e;
+  border: 1px solid rgba(95, 174, 126, .35);
 }
 
 .food-tag-avoid {
-  background: rgba(176, 58, 46, .08);
-  color: #8f2c22;
-  border: 1px solid rgba(176, 58, 46, .25);
+  background: rgba(224, 138, 128, .12);
+  color: #e08a80;
+  border: 1px solid rgba(224, 138, 128, .3);
 }
 
 /* 经典食疗方 */
@@ -1221,29 +1222,5 @@ h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: .01em; }
   }
 }
 
-/* ---------- 暗色模式（专业版） ---------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1b1610;
-    --color-bg-alt: #251e15;
-    --color-bg-card: #2d251a;
-    --color-text: #efe6d4;
-    --color-text-soft: #cdbb9f;
-    --color-text-mute: #9a8968;
-    --color-border: #3d3428;
-    --color-shadow: rgba(0, 0, 0, .3);
-    --color-shadow-lg: rgba(0, 0, 0, .5);
-  }
-
-  .result-hero { background: linear-gradient(135deg, rgba(176, 58, 46, .08), rgba(184, 145, 46, .08)); }
-  .advice-block { background: var(--color-bg-alt); }
-  .food-tag-good {
-    background: rgba(62, 122, 86, .15);
-    color: #82c69e;
-  }
-  .food-tag-avoid {
-    background: rgba(176, 58, 46, .12);
-    color: #e08a80;
-  }
-}
+/* ---------- 暗黑主题（默认） ---------- */
 

@@ -6,9 +6,9 @@
 <title>中医九大体质自评量表 · 分享海报</title>
 <style>
   :root{
-    --bg:#fdfaf6; --bg-alt:#f5ede0; --card:#ffffff;
-    --text:#2d2419; --text-soft:#6b5d4f; --text-mute:#a39888;
-    --primary:#e76f51; --primary-d:#d65a3a; --accent:#2a9d8f;
+    --bg:#f7f2e7; --bg-alt:#efe6d4; --card:#fffdf8;
+    --text:#2f2518; --text-soft:#6b5a3e; --text-mute:#a08d6e;
+    --primary:#b03a2e; --primary-d:#8f2c22; --accent:#b8912e;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html,body{background:#e9e2d6;}
@@ -29,7 +29,7 @@
   .btn-primary{background:var(--primary); color:#fff;}
   .btn-primary:hover{background:var(--primary-d);}
   .btn-ghost{background:transparent; color:var(--primary);}
-  .btn-ghost:hover{background:rgba(231,111,81,.10);}
+  .btn-ghost:hover{background:rgba(176,58,46,.10);}
   .hint{font-size:13px; color:#7a6f60; text-align:center; max-width:460px; line-height:1.6;}
 
   /* 海报舞台：自适应缩放预览，导出时按原始 750x1334 */
@@ -37,22 +37,22 @@
   .poster{
     width:750px; height:1334px; flex:0 0 auto;
     background:
-      radial-gradient(120% 60% at 50% -8%, rgba(231,111,81,.16), rgba(231,111,81,0) 60%),
-      radial-gradient(90% 50% at 100% 100%, rgba(42,157,143,.12), rgba(42,157,143,0) 55%),
-      linear-gradient(180deg,#fdfaf6 0%, #f7efe2 100%);
+      radial-gradient(120% 60% at 50% -8%, rgba(176,58,46,.16), rgba(176,58,46,0) 60%),
+      radial-gradient(90% 50% at 100% 100%, rgba(184,145,46,.12), rgba(184,145,46,0) 55%),
+      linear-gradient(180deg,#f7f2e7 0%, #efe6d4 100%);
     border-radius:36px; position:relative; overflow:hidden;
-    box-shadow:0 30px 70px rgba(45,36,25,.22);
+    box-shadow:0 30px 70px rgba(47,37,24,.22);
     padding:60px 56px 48px;
     display:flex; flex-direction:column;
   }
   /* 顶部装饰弧线 */
   .poster::before{
     content:""; position:absolute; top:-160px; left:-120px; width:420px; height:420px;
-    border:2px solid rgba(231,111,81,.18); border-radius:50%;
+    border:2px solid rgba(176,58,46,.18); border-radius:50%;
   }
   .poster::after{
     content:""; position:absolute; bottom:-140px; right:-110px; width:360px; height:360px;
-    border:2px solid rgba(42,157,143,.16); border-radius:50%;
+    border:2px solid rgba(184,145,46,.16); border-radius:50%;
   }
 
   /* 品牌行 */
@@ -60,7 +60,7 @@
   .brand .mark{
     width:52px; height:52px; border-radius:16px; background:var(--primary);
     display:flex; align-items:center; justify-content:center; font-size:28px;
-    box-shadow:0 8px 18px rgba(231,111,81,.35);
+    box-shadow:0 8px 18px rgba(176,58,46,.35);
   }
   .brand .name{font-size:24px; font-weight:800; letter-spacing:.5px;}
   .brand .name small{display:block; font-size:13px; font-weight:500; color:var(--text-soft); letter-spacing:0;}
@@ -69,7 +69,7 @@
   .hero{margin-top:46px; position:relative;}
   .eyebrow{
     display:inline-block; font-size:15px; font-weight:600; color:var(--primary);
-    background:rgba(231,111,81,.10); padding:8px 16px; border-radius:999px; letter-spacing:.3px;
+    background:rgba(176,58,46,.10); padding:8px 16px; border-radius:999px; letter-spacing:.3px;
   }
   .title{
     margin-top:22px; font-size:74px; line-height:1.12; font-weight:900; letter-spacing:1px;
@@ -89,7 +89,7 @@
   .cell{display:flex; flex-direction:column; align-items:center; gap:12px;}
   .cell .dot{
     width:96px; height:96px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    font-size:46px; box-shadow:0 10px 22px rgba(45,36,25,.14); position:relative;
+    font-size:46px; box-shadow:0 10px 22px rgba(47,37,24,.14); position:relative;
   }
   .cell .dot::after{
     content:""; position:absolute; inset:-6px; border-radius:50%; border:2px solid currentColor; opacity:.18;
@@ -113,7 +113,7 @@
   /* 二维码卡 */
   .qr{
     margin-top:34px; background:#fff; border-radius:26px; padding:30px;
-    display:flex; align-items:center; gap:26px; box-shadow:0 16px 36px rgba(45,36,25,.14);
+    display:flex; align-items:center; gap:26px; box-shadow:0 16px 36px rgba(47,37,24,.14);
     position:relative;
   }
   .qr img{width:188px; height:188px; border-radius:14px; display:block; background:#fff;}
@@ -192,10 +192,10 @@
 <script>
   // 九大体质（顺序与官网一致，emoji + 名称 + 品牌色 + 标签）
   var TYPES = [
-    {name:'平和质', tag:'理想体质', emoji:'🌿', color:'#10b981'},
+    {name:'平和质', tag:'理想体质', emoji:'🌿', color:'#3e7a56'},
     {name:'气虚质', tag:'容易疲劳', emoji:'🍃', color:'#0891b2'},
     {name:'阳虚质', tag:'畏寒怕冷', emoji:'❄️', color:'#3b82f6'},
-    {name:'阴虚质', tag:'手足心热', emoji:'☀️', color:'#f59e0b'},
+    {name:'阴虚质', tag:'手足心热', emoji:'☀️', color:'#c9a227'},
     {name:'痰湿质', tag:'体型偏胖', emoji:'🌾', color:'#a16207'},
     {name:'湿热质', tag:'面油口苦', emoji:'🔥', color:'#dc2626'},
     {name:'血瘀质', tag:'肤色晦暗', emoji:'🍷', color:'#9333ea'},

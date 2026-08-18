@@ -172,10 +172,10 @@
         </a>
         <nav class="nav-links" aria-label="主导航">
           <a href="/" class="active">首页</a>
-          <a href="/quiz">开始测试</a>
-          <a href="/guide">体质百科</a>
+          <a href="quiz.html">开始测试</a>
+          <a href="guide.html">体质百科</a>
         </nav>
-        <a href="/quiz" class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.9375rem;">
+        <a href="quiz.html" class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.9375rem;">
           立即测试
         </a>
         <button class="menu-toggle icon-btn" type="button" aria-label="菜单">☰</button>
@@ -183,8 +183,8 @@
       <nav class="mobile-menu" aria-label="移动端导航">
         <div style="display:flex;flex-direction:column;padding:.5rem 0;">
           <a href="/" style="padding:.75rem 0;">首页</a>
-          <a href="/quiz" style="padding:.75rem 0;">开始测试</a>
-          <a href="/guide" style="padding:.75rem 0;">体质百科</a>
+          <a href="quiz.html" style="padding:.75rem 0;">开始测试</a>
+          <a href="guide.html" style="padding:.75rem 0;">体质百科</a>
         </div>
       </nav>
     </div>
@@ -204,8 +204,8 @@
             参照中华中医药学会公布的《中医体质分类与判定》标准，通过 27 项自评问题评估你的体质倾向，并获得特征解读、调养建议与饮食方向参考。
           </p>
           <div class="hero-actions">
-            <a href="/quiz" class="btn btn-primary btn-lg">开始体质评估 →</a>
-            <a href="/guide" class="btn btn-ghost btn-lg">查看九大体质详解</a>
+            <a href="quiz.html" class="btn btn-primary btn-lg">开始体质评估 →</a>
+            <a href="guide.html" class="btn btn-ghost btn-lg">查看九大体质详解</a>
           </div>
           <ul class="hero-trust">
             <li><strong>9</strong><span>种体质分类</span></li>
@@ -357,9 +357,52 @@
         <p style="color:var(--color-text-soft);font-size:1.125rem;margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto;">
           27 项自评量表，约 3 分钟完成。依据《中医体质分类与判定》标准获得你的体质倾向评估与调养参考。
         </p>
-        <a href="/quiz" class="btn btn-primary btn-lg">开始体质评估 →</a>
+        <a href="quiz.html" class="btn btn-primary btn-lg">开始体质评估 →</a>
       </div>
     </section>
+  
+    <!-- 体质自测知识 -->
+    <section class="section knowledge-section" aria-labelledby="knowledgeTitle">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">体质小课堂</span>
+          <h2 id="knowledgeTitle">读懂体质，从了解身体开始</h2>
+          <p>体质反映一段时间内相对稳定的身心特征。自测用于认识倾向、调整生活方式，不替代医疗诊断。</p>
+        </div>
+        <div class="knowledge-grid">
+          <article class="knowledge-card">
+            <span class="knowledge-icon">①</span>
+            <h3>九种体质怎么看？</h3>
+            <p>平和质是相对协调的状态；其余八种为偏颇倾向。结果不是给人贴标签，而是提示更值得关注的生活习惯。</p>
+          </article>
+          <article class="knowledge-card">
+            <span class="knowledge-icon">②</span>
+            <h3>怎样回答更准确？</h3>
+            <p>请回想近一年较常见的感受，按真实情况选择「是 / 有时 / 不是」。不要只依据今天的短暂状态判断。</p>
+          </article>
+          <article class="knowledge-card">
+            <span class="knowledge-icon">③</span>
+            <h3>分数意味着什么？</h3>
+            <p>分数表示某类特征的相对倾向，用于横向理解九种体质；它不等同于疾病诊断，也不能替代专业检查。</p>
+          </article>
+        </div>
+        <div class="knowledge-path" role="list" aria-label="自测使用步骤">
+          <div class="knowledge-step" role="listitem"><strong>1. 如实作答</strong><span>完成 27 道三档自评题</span></div>
+          <div class="knowledge-step" role="listitem"><strong>2. 阅读报告</strong><span>了解特点、饮食与食疗方向</span></div>
+          <div class="knowledge-step" role="listitem"><strong>3. 小步调整</strong><span>从作息、运动和饮食习惯开始</span></div>
+        </div>
+        <div class="season-grid" aria-label="四季调养提示">
+          <article><b>春 · 舒展</b><p>规律作息、适度活动；感觉情绪紧绷时，给自己留出散步和放松时间。</p></article>
+          <article><b>夏 · 养心</b><p>避免贪凉和过度熬夜，运动后及时补水，保持饮食清淡多样。</p></article>
+          <article><b>秋 · 润养</b><p>天气干燥时注意补水与规律睡眠；食物选择以个人耐受为先。</p></article>
+          <article><b>冬 · 藏养</b><p>注意保暖，减少久坐，保持温和、可长期坚持的运动习惯。</p></article>
+        </div>
+        <details class="knowledge-faq"><summary>多久测一次比较合适？</summary><p>体质具有相对稳定性。生活、作息或季节变化明显时可复测；不建议短时间内反复测试。</p></details>
+        <details class="knowledge-faq"><summary>结果显示多种倾向怎么办？</summary><p>这很常见。优先从分数较高、且与你日常感受一致的方向做小幅调整；不适或疑虑请咨询专业人士。</p></details>
+        <aside class="knowledge-note">小提示：若症状持续、加重，或影响日常生活，请及时咨询医生或专业中医师。</aside>
+      </div>
+    </section>
+
   </main>
 
   <!-- ========== 页脚 ========== -->
@@ -376,6 +419,7 @@
   </footer>
 
   <script src="js/data.js"></script>
+  <script src="js/wordpress-integration.js"></script>
   <script src="js/main.js"></script>
   <script>
     // 渲染九大体质卡片

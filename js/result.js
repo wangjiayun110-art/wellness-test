@@ -6,6 +6,8 @@
 
   const { TYPES, buildPurchaseLinks } = window.WellnessData;
   const { Storage } = window.WellnessApp;
+  const wpUrl = (page, hash = '') => window.TizhiShopIntegration ? window.TizhiShopIntegration.url(page, hash) : `/${page}${hash}`;
+  const wpProducts = (typeId) => window.TizhiShopIntegration ? window.TizhiShopIntegration.products(typeId) : [];
 
   const KEY_RESULT = 'wellness-result-v1';
 
@@ -30,7 +32,7 @@
           <p style="color:var(--color-text-soft);margin-bottom:2rem;">
             完成测试后会自动跳转到结果页。
           </p>
-          <a href="/quiz" class="btn btn-primary">开始测试 →</a>
+          <a href="${wpUrl('quiz')}" class="btn btn-primary">开始测试 →</a>
         </div>
       </div>
     `;
@@ -38,6 +40,7 @@
 
   function renderResult(result) {
     const t = TYPES[result.typeId];
+    const foodTherapy = (t && t.foodTherapy ? t.foodTherapy : []).concat((window.WellnessRecipes || {})[result.typeId] || []);
     if (!t) return renderNoResult();
 
     // 头部颜色根据体质调整
@@ -138,11 +141,11 @@
           </div>
           ` : ''}
 
-          ${t.foodTherapy && t.foodTherapy.length ? `
+          ${foodTherapy.length ? `
           <div class="advice-block">
             <div class="advice-title">🍲 经典食疗方</div>
             <div class="therapy-list">
-              ${t.foodTherapy.map((f) => `
+              ${foodTherapy.map((f) => `
                 <div class="therapy-card">
                   <div class="therapy-name">${f.name}</div>
                   <div class="therapy-recipe">${f.recipe}</div>
@@ -165,24 +168,28 @@
           <div class="score-bars" id="scoreBars"></div>
         </section>
 
+        <!-- WordPress 商品推荐（由 typeId 配置驱动） -->
+        <section class="section-card"><h3><span class="num">7</span>推荐商品</h3><div class="products-grid" id="productsGrid"></div></section>
+
         <!-- 操作 -->
         <div class="action-row">
-          <a href="/guide#${t.id}" class="btn btn-ghost">查看百科详解</a>
+          <a href="${wpUrl('guide', `#${t.id}`)}" class="btn btn-ghost">查看百科详解</a>
           <button class="btn btn-ghost" id="shareBtn">📋 复制分享</button>
           <button class="btn btn-ghost" id="retestBtn">🔁 重新评估</button>
-          <a href="/" class="btn btn-primary">回到首页</a>
+          <a href="${wpUrl('home')}" class="btn btn-primary">回到首页</a>
         </div>
       </div>
     `;
 
     // 得分柱状图
     renderScoreBars(result.scores, t.id);
+    renderProducts(wpProducts(t.id));
 
     // 事件
     document.getElementById('retestBtn').addEventListener('click', () => {
       if (!confirm('确定要清空结果并重新评估吗？')) return;
       Storage.remove(KEY_RESULT);
-      window.location.href = '/quiz';
+      window.location.href = wpUrl('quiz');
     });
     document.getElementById('shareBtn').addEventListener('click', () => {
       const txt = `我在「中医体质自评」测出来是「${t.name}」(${t.tagline})，依据《中医体质分类与判定》标准。你也来测测？${location.origin}/quiz`;

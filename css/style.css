@@ -1124,3 +1124,88 @@ ul { list-style: none; }
   }
 }
 
+
+
+/* =============================================================
+   WordPress tizhi-shop: mobile-first embed resilience
+   These rules are deliberately scoped to existing UI components.
+   ============================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas { max-width: 100%; height: auto; }
+body { overflow-x: hidden; overflow-wrap: anywhere; }
+.site-header, .quiz-progress { max-width: 100vw; }
+
+@media (max-width: 767.98px) {
+  html { -webkit-text-size-adjust: 100%; }
+  .container,
+  .quiz-page,
+  .result-wrap,
+  .guide-wrap { width: 100%; max-width: none; padding-left: 1rem; padding-right: 1rem; }
+
+  .nav-row { gap: .75rem; }
+  .logo { min-width: 0; }
+  .mobile-menu { width: calc(100vw - 2rem); }
+
+  .hero-title,
+  .result-type,
+  .guide-content h2 { overflow-wrap: anywhere; }
+  .hero-actions,
+  .action-row { align-items: stretch; }
+  .hero-actions .btn,
+  .action-row .btn { width: 100%; max-width: none; justify-content: center; }
+
+  .question-card,
+  .section-card,
+  .guide-content { border-radius: var(--radius-md); }
+  .question-text { overflow-wrap: anywhere; }
+  .options { gap: .625rem; }
+  .option { width: 100%; text-align: left; line-height: 1.45; }
+
+  .products-grid,
+  .feature-list { grid-template-columns: 1fr; }
+  .product-chip { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .score-row { grid-template-columns: minmax(68px, .85fr) minmax(0, 1fr) 36px; }
+  .score-row span:first-child { white-space: normal; }
+  .platform-btn { align-items: flex-start; padding: .875rem; }
+  .platform-info { min-width: 0; }
+  .platform-name,
+  .platform-desc { display: block; overflow-wrap: anywhere; }
+
+  .food-tags { gap: .375rem; }
+  .food-tag { max-width: 100%; white-space: normal; text-align: left; }
+  .therapy-card { overflow-wrap: anywhere; }
+}
+
+@media (max-width: 374.98px) {
+  .quiz-nav { flex-direction: column-reverse; }
+  .quiz-nav .btn { max-width: none; width: 100%; }
+  .result-score { padding-left: .75rem; padding-right: .75rem; }
+  .result-score strong { font-size: 1.05rem; overflow-wrap: anywhere; }
+}
+
+
+/* 体质小课堂 */
+.knowledge-section { background: linear-gradient(180deg, rgba(42,157,143,.06), transparent); }
+.knowledge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.knowledge-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; }
+.knowledge-icon { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: rgba(42,157,143,.12); color: var(--color-accent); font-weight: 700; margin-bottom: .875rem; }
+.knowledge-card h3 { font-size: 1.05rem; margin-bottom: .625rem; }
+.knowledge-card p, .knowledge-note, .knowledge-step span { color: var(--color-text-soft); font-size: .9375rem; line-height: 1.7; }
+.knowledge-path { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.knowledge-step { position: relative; padding: 1rem 1.25rem; border-left: 3px solid var(--color-primary); background: var(--color-bg-alt); border-radius: 0 var(--radius-md) var(--radius-md) 0; display: flex; flex-direction: column; gap: .25rem; }
+.knowledge-note { margin-top: 1.25rem; padding: 1rem 1.25rem; background: rgba(245,158,11,.08); border-radius: var(--radius-md); border-left: 3px solid var(--color-warning); }
+@media (max-width: 767.98px) {
+  .knowledge-grid, .knowledge-path { grid-template-columns: 1fr; gap: .75rem; }
+  .knowledge-card { padding: 1.25rem; }
+  .knowledge-step { padding: .875rem 1rem; }
+}
+
+.season-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-top: 1.25rem; }
+.season-grid article { padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-card); border-radius: var(--radius-md); }
+.season-grid b { color: var(--color-primary); }
+.season-grid p { margin-top: .45rem; font-size: .875rem; line-height: 1.65; color: var(--color-text-soft); }
+.knowledge-faq { margin-top: .75rem; padding: .875rem 1rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+.knowledge-faq summary { cursor: pointer; font-weight: 600; }
+.knowledge-faq p { margin: .75rem 0 0; color: var(--color-text-soft); font-size: .9375rem; line-height: 1.7; }
+@media (max-width: 767.98px) { .season-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 374.98px) { .season-grid { grid-template-columns: 1fr; } }

@@ -75,17 +75,17 @@
         </a>
         <nav class="nav-links">
           <a href="/">首页</a>
-          <a href="/quiz">开始测试</a>
-          <a href="/guide" class="active">体质百科</a>
+          <a href="quiz.html">开始测试</a>
+          <a href="guide.html" class="active">体质百科</a>
         </nav>
-        <a href="/quiz" class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.9375rem;">立即测试</a>
+        <a href="quiz.html" class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.9375rem;">立即测试</a>
         <button class="menu-toggle icon-btn" type="button" aria-label="菜单">☰</button>
       </div>
       <nav class="mobile-menu" aria-label="移动端导航">
         <div style="display:flex;flex-direction:column;padding:.5rem 0;">
           <a href="/" style="padding:.75rem 0;">首页</a>
-          <a href="/quiz" style="padding:.75rem 0;">开始测试</a>
-          <a href="/guide" style="padding:.75rem 0;">体质百科</a>
+          <a href="quiz.html" style="padding:.75rem 0;">开始测试</a>
+          <a href="guide.html" style="padding:.75rem 0;">体质百科</a>
         </div>
       </nav>
     </div>
@@ -148,6 +148,7 @@
   </footer>
 
   <script src="js/data.js"></script>
+  <script src="js/wordpress-integration.js"></script>
   <script src="js/main.js"></script>
   <script>
     (function () {
@@ -217,7 +218,7 @@
             <div class="products-grid">
               ${t.products.map((p) => `<div class="product-chip">${p}</div>`).join('')}
             </div>
-            <a href="/quiz" class="btn btn-primary" style="margin-top:1.5rem;">测测我是这种体质？</a>
+            <a href="quiz.html" class="btn btn-primary" style="margin-top:1.5rem;">测测我是这种体质？</a>
           </div>
         `;
       }
